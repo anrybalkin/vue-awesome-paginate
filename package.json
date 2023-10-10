@@ -1,5 +1,5 @@
 {
-  "name": "vue-awesome-paginate",
+  "name": "fork-vue-awesome-paginate",
   "private": false,
   "type": "module",
   "main": "dist/index.cjs",

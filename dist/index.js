@@ -497,8 +497,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         ])) : createCommentVNode("", true),
         (openBlock(true), createElementBlock(Fragment, null, renderList(unref(paginate).pages, (page, index) => {
           return openBlock(), createElementBlock("li", { key: index }, [
-            createTextVNode(toDisplayString(page) + toDisplayString(index) + " ", 1),
-            (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
+            (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : page !== unref(currentPageRef) ? "a" : "button"), {
               href: navigationHandler(page),
               onClick: withModifiers(() => onClickHandler(page), ["prevent"]),
               class: normalizeClass([
