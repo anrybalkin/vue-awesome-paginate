@@ -384,7 +384,6 @@ const paginate = computed(() => {
 });
 // rtl check
 const isRtl = computed(() => props.dir === "rtl");
-
 // ---------------------------------- //
 // ---> Components If Conditions <--- //
 // ---------------------------------- //
@@ -604,8 +603,9 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
 
     <!-- Numbers Buttons -->
     <li v-for="(page, index) in paginate.pages" :key="index">
+      
       <component
-        :is="type === 'button' ? 'button' : 'a'"
+        :is="type === 'button' ? 'button' : (page!==currentPageRef?'a':'button')"
         :href="navigationHandler(page)"
         @click.prevent="() => onClickHandler(page)"
         :class="[
