@@ -152,6 +152,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       type: String,
       default: "#"
     },
+    lang: {
+      type: String,
+      default: "#"
+    },
     backwardJumpButtonContent: {
       type: String,
       default: "<<"
@@ -408,6 +412,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               __props.paginateButtonsClass,
               __props.disablePagination ? __props.disabledPaginateButtonsClass : ""
             ]),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             disabled: __props.disablePagination
           }, {
             default: withCtx(() => [
@@ -416,11 +421,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "class", "hreflang", "disabled"]))
         ])) : createCommentVNode("", true),
         __props.showJumpButtons && unref(startingBreakPointButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_2, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(unref(isRtl) ? unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2)),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             onClick: _cache[1] || (_cache[1] = withModifiers(($event) => onClickHandler(unref(isRtl) ? unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2)), ["prevent"])),
             class: normalizeClass([
               __props.backwardJumpButtonClass,
@@ -436,12 +442,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "hreflang", "class", "disabled"]))
         ])) : createCommentVNode("", true),
         !__props.hidePrevNext && unref(backButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_3, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(unref(isRtl) ? unref(currentPageRef) + 1 : unref(currentPageRef) - 1),
             onClick: _cache[2] || (_cache[2] = withModifiers(($event) => onClickHandler(unref(isRtl) ? unref(currentPageRef) + 1 : unref(currentPageRef) - 1), ["prevent"])),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             class: normalizeClass([
               __props.backButtonClass,
               __props.paginateButtonsClass,
@@ -456,11 +463,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "hreflang", "class", "disabled"]))
         ])) : createCommentVNode("", true),
         __props.showBreakpointButtons && unref(firstButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_4, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(unref(isRtl) ? unref(totalPages) : 1),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             onClick: _cache[3] || (_cache[3] = withModifiers(($event) => onClickHandler(unref(isRtl) ? unref(totalPages) : 1), ["prevent"])),
             class: normalizeClass([
               __props.firstButtonClass,
@@ -474,11 +482,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               createTextVNode(toDisplayString(unref(isRtl) ? NumbersLocale(unref(totalPages)) : NumbersLocale(1)), 1)
             ]),
             _: 1
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "hreflang", "class", "disabled"]))
         ])) : createCommentVNode("", true),
         __props.showBreakpointButtons && unref(startingBreakPointButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_5, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(__props.disableBreakpointButtons ? unref(currentPageRef) : unref(isRtl) ? unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2)),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             onClick: _cache[4] || (_cache[4] = withModifiers(($event) => onClickHandler(__props.disableBreakpointButtons ? unref(currentPageRef) : unref(isRtl) ? unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2)), ["prevent"])),
             disabled: __props.disableBreakpointButtons || __props.disablePagination,
             class: normalizeClass([
@@ -493,7 +502,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "disabled", "class"]))
+          }, 8, ["href", "hreflang", "disabled", "class"]))
         ])) : createCommentVNode("", true),
         (openBlock(true), createElementBlock(Fragment, null, renderList(unref(paginate).pages, (page, index) => {
           return openBlock(), createElementBlock("li", { key: index }, [
@@ -506,18 +515,20 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 page === unref(currentPageRef) ? __props.activePageClass : "",
                 __props.disablePagination ? __props.disabledPaginateButtonsClass : ""
               ]),
+              hreflang: __props.lang != "#" && unref(currentPageRef) != page ? __props.lang : null,
               disabled: __props.disablePagination
             }, {
               default: withCtx(() => [
                 createTextVNode(toDisplayString(NumbersLocale(page)), 1)
               ]),
               _: 2
-            }, 1032, ["href", "onClick", "class", "disabled"]))
+            }, 1032, ["href", "onClick", "class", "hreflang", "disabled"]))
           ]);
         }), 128)),
         __props.showBreakpointButtons && unref(endingBreakPointButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_6, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(__props.disableBreakpointButtons ? unref(currentPageRef) : unref(isRtl) ? unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2)),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             onClick: _cache[5] || (_cache[5] = withModifiers(($event) => onClickHandler(__props.disableBreakpointButtons ? unref(currentPageRef) : unref(isRtl) ? unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2)), ["prevent"])),
             disabled: __props.disableBreakpointButtons || __props.disablePagination,
             class: normalizeClass([
@@ -532,7 +543,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "disabled", "class"]))
+          }, 8, ["href", "hreflang", "disabled", "class"]))
         ])) : createCommentVNode("", true),
         __props.showBreakpointButtons && unref(lastButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_7, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
@@ -544,18 +555,20 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               __props.disablePagination ? __props.disabledPaginateButtonsClass : "",
               __props.disablePagination ? __props.disabledLastButtonClass : ""
             ]),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             disabled: __props.disablePagination
           }, {
             default: withCtx(() => [
               createTextVNode(toDisplayString(unref(isRtl) ? NumbersLocale(1) : NumbersLocale(unref(totalPages))), 1)
             ]),
             _: 1
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "class", "hreflang", "disabled"]))
         ])) : createCommentVNode("", true),
         !__props.hidePrevNext && unref(nextButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_8, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(unref(isRtl) ? unref(currentPageRef) - 1 : unref(currentPageRef) + 1),
             onClick: _cache[7] || (_cache[7] = withModifiers(($event) => onClickHandler(unref(isRtl) ? unref(currentPageRef) - 1 : unref(currentPageRef) + 1), ["prevent"])),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             class: normalizeClass([
               __props.paginateButtonsClass,
               __props.nextButtonClass,
@@ -570,11 +583,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "hreflang", "class", "disabled"]))
         ])) : createCommentVNode("", true),
         __props.showJumpButtons && unref(endingBreakPointButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_9, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(unref(isRtl) ? unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2)),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             onClick: _cache[8] || (_cache[8] = withModifiers(($event) => onClickHandler(unref(isRtl) ? unref(currentPageRef) - Math.ceil(__props.maxPagesShown / 2) : unref(currentPageRef) + Math.ceil(__props.maxPagesShown / 2)), ["prevent"])),
             class: normalizeClass([
               __props.forwardJumpButtonClass,
@@ -590,12 +604,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "hreflang", "class", "disabled"]))
         ])) : createCommentVNode("", true),
         __props.showEndingButtons && unref(lastPageButtonIfCondition) ? (openBlock(), createElementBlock("li", _hoisted_10, [
           (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : "a"), {
             href: navigationHandler(unref(isRtl) ? 1 : unref(totalPages)),
             onClick: _cache[9] || (_cache[9] = withModifiers(($event) => onClickHandler(unref(isRtl) ? 1 : unref(totalPages)), ["prevent"])),
+            hreflang: __props.lang != "#" ? __props.lang : null,
             class: normalizeClass([
               __props.lastPageButtonClass,
               __props.paginateButtonsClass,
@@ -609,7 +624,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ])
             ]),
             _: 3
-          }, 8, ["href", "class", "disabled"]))
+          }, 8, ["href", "hreflang", "class", "disabled"]))
         ])) : createCommentVNode("", true)
       ], 2);
     };

@@ -149,6 +149,10 @@ const props = defineProps({
     type: String,
     default: "#",
   },
+  lang: {
+    type: String,
+    default: "#",
+  },
   backwardJumpButtonContent: {
     type: String,
     default: "<<",
@@ -482,6 +486,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
           paginateButtonsClass,
           disablePagination ? disabledPaginateButtonsClass : '',
         ]"
+        :hreflang="lang!='#'?lang:null"
         :disabled="disablePagination"
       >
         <slot name="first-page-button">
@@ -501,6 +506,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
               : currentPageRef - Math.ceil(maxPagesShown / 2)
           )
         "
+        :hreflang="lang!='#'?lang:null"
         @click.prevent="
           onClickHandler(
             isRtl
@@ -532,6 +538,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
         @click.prevent="
           onClickHandler(isRtl ? currentPageRef + 1 : currentPageRef - 1)
         "
+        :hreflang="lang!='#'?lang:null"
         :class="[
           backButtonClass,
           paginateButtonsClass,
@@ -551,6 +558,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
       <component
         :is="type === 'button' ? 'button' : 'a'"
         :href="navigationHandler(isRtl ? totalPages : 1)"
+        :hreflang="lang!='#'?lang:null"
         @click.prevent="onClickHandler(isRtl ? totalPages : 1)"
         :class="[
           firstButtonClass,
@@ -577,6 +585,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
               : currentPageRef - Math.ceil(maxPagesShown / 2)
           )
         "
+        :hreflang="lang!='#'?lang:null"
         @click.prevent="
           onClickHandler(
             disableBreakpointButtons
@@ -614,6 +623,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
           page === currentPageRef ? activePageClass : '',
           disablePagination ? disabledPaginateButtonsClass : '',
         ]"
+        :hreflang="lang!='#'&&currentPageRef!=page?lang:null"
         :disabled="disablePagination"
       >
         {{ NumbersLocale(page) }}
@@ -632,7 +642,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
               : currentPageRef + Math.ceil(maxPagesShown / 2)
           )
         "
-
+        :hreflang="lang!='#'?lang:null"
         @click.prevent="
           onClickHandler(
             disableBreakpointButtons
@@ -669,6 +679,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
           disablePagination ? disabledPaginateButtonsClass : '',
           disablePagination ? disabledLastButtonClass : '',
         ]"
+        :hreflang="lang!='#'?lang:null"
         :disabled="disablePagination"
       >
         {{ isRtl ? NumbersLocale(1) : NumbersLocale(totalPages) }}
@@ -684,6 +695,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
         @click.prevent="
           onClickHandler(isRtl ? currentPageRef - 1 : currentPageRef + 1)
         "
+        :hreflang="lang!='#'?lang:null"
         :class="[
           paginateButtonsClass,
           nextButtonClass,
@@ -709,6 +721,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
               : currentPageRef + Math.ceil(maxPagesShown / 2)
           )
         "
+        :hreflang="lang!='#'?lang:null"
         @click.prevent="
           onClickHandler(
             isRtl
@@ -736,6 +749,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
         :is="type === 'button' ? 'button' : 'a'"
         :href="navigationHandler(isRtl ? 1 : totalPages)"
         @click.prevent="onClickHandler(isRtl ? 1 : totalPages)"
+        :hreflang="lang!='#'?lang:null"
         :class="[
           lastPageButtonClass,
           paginateButtonsClass,

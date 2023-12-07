@@ -86,6 +86,10 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    lang: {
+        type: StringConstructor;
+        default: string;
+    };
     backwardJumpButtonContent: {
         type: StringConstructor;
         default: string;
@@ -288,6 +292,10 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    lang: {
+        type: StringConstructor;
+        default: string;
+    };
     backwardJumpButtonContent: {
         type: StringConstructor;
         default: string;
@@ -421,6 +429,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
     showJumpButtons: boolean;
     linkUrl: string;
     pureLinkUrl: string;
+    lang: string;
     backwardJumpButtonContent: string;
     forwardJumpButtonContent: string;
     disablePagination: boolean;
