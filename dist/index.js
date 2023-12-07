@@ -498,7 +498,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         (openBlock(true), createElementBlock(Fragment, null, renderList(unref(paginate).pages, (page, index) => {
           return openBlock(), createElementBlock("li", { key: index }, [
             (openBlock(), createBlock(resolveDynamicComponent(__props.type === "button" ? "button" : page !== unref(currentPageRef) ? "a" : "button"), {
-              href: navigationHandler(page),
+              href: unref(currentPageRef) != page ? navigationHandler(page) : null,
               onClick: withModifiers(() => onClickHandler(page), ["prevent"]),
               class: normalizeClass([
                 __props.paginateButtonsClass,

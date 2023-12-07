@@ -606,7 +606,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
       
       <component
         :is="type === 'button' ? 'button' : (page!==currentPageRef?'a':'button')"
-        :href="navigationHandler(page)"
+        :href="currentPageRef!=page?navigationHandler(page):null"
         @click.prevent="() => onClickHandler(page)"
         :class="[
           paginateButtonsClass,
@@ -624,8 +624,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
     <li v-if="showBreakpointButtons && endingBreakPointButtonIfCondition">
       <component
         :is="type === 'button' ? 'button' : 'a'"
-        :href="
-          navigationHandler(
+         :href="navigationHandler(
             disableBreakpointButtons
               ? currentPageRef
               : isRtl
@@ -633,6 +632,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
               : currentPageRef + Math.ceil(maxPagesShown / 2)
           )
         "
+
         @click.prevent="
           onClickHandler(
             disableBreakpointButtons
@@ -679,8 +679,7 @@ if (props.type === "link" && !props.linkUrl.includes("[page]")) {
     <li v-if="!hidePrevNext && nextButtonIfCondition">
       <component
         :is="type === 'button' ? 'button' : 'a'"
-        :href="
-          navigationHandler(isRtl ? currentPageRef - 1 : currentPageRef + 1)
+        :href="navigationHandler(isRtl ? currentPageRef - 1 : currentPageRef + 1)
         "
         @click.prevent="
           onClickHandler(isRtl ? currentPageRef - 1 : currentPageRef + 1)
